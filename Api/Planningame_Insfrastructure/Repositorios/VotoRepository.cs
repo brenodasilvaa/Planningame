@@ -1,4 +1,5 @@
-﻿using Planningame_Domain.Entidades;
+﻿using Microsoft.EntityFrameworkCore;
+using Planningame_Domain.Entidades;
 using Planningame_Domain.Interfaces.Repositorios;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,11 @@ namespace Planningame_Insfrastructure.Repositorios
             await context.Votos.AddAsync(voto, cancellation);
 
             return voto.Id;
+        }
+
+        public Task<IQueryable<Voto>> GetByRodadaId(Guid rodadaId, CancellationToken cancellation)
+        {
+            return Task.FromResult(context.Votos.Where(x => x.RodadaId == rodadaId));
         }
     }
 }

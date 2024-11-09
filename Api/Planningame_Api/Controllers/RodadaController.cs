@@ -16,17 +16,17 @@ namespace Planningame_Api.Controllers
             return Ok(await rodadaService.Criar(command.Adapt<Rodada>(), cancellation));
         }
 
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult> GetById(Guid id, CancellationToken cancellation)
-        //{
-        //    try
-        //    {
-        //        return Ok((await rodadaService.GetById(id, cancellation)).Adapt<PartidaDto>());
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return BadRequest(ex.Message);
-        //    }
-        //}
+        [HttpGet("CalculoVoto/{id}")]
+        public async Task<IActionResult> CalcularVotos(Guid id, CancellationToken cancellation)
+        {
+            try
+            {
+                return Ok(await rodadaService.CalcularVotos(id, cancellation));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

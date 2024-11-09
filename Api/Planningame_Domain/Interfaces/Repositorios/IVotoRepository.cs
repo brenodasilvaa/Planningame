@@ -10,5 +10,6 @@ namespace Planningame_Domain.Interfaces.Repositorios
     public interface IVotoRepository
     {
         Task<Guid> Criar(Voto voto, CancellationToken cancellation);
+        Task<IQueryable<Voto>> GetByRodadaId(Guid rodadaId, CancellationToken cancellation);
     }
 }
