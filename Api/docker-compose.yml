@@ -1,0 +1,35 @@
+version: '3.4'
+
+networks:
+  default:
+    external: true
+    name: planningApi
+services:
+  planningame_api:
+    depends_on:
+     - "planningame_db"
+    container_name: planningame-service
+    ports:
+      - "5010:80"
+    image: ${DOCKER_REGISTRY-}planningameapi
+    build:
+      context: .
+      dockerfile: Planningame_Api/Dockerfile
+    environment:
+      - ConnectionStrings__DefaultConnection=User ID =planningameAdmin;Password=Inspir@-;Server=planning_db;Port=5433;Database=planningame;Pooling=true;
+      - ASPNETCORE_URLS=http://+:80
+  planningame_db:
+    image: postgres:latest
+    container_name: planningame_db
+    environment:
+      - POSTGRES_USER=planningameAdmin
+      - POSTGRES_PASSWORD=Inspir@-
+      - POSTGRES_DB=planningame
+    ports:
+      - "5433:5433"
+    restart: always
+    volumes:
+      - app_data:/var/lib/postgresql/data
+volumes:
+  app_data:
+
