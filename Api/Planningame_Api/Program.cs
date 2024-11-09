@@ -3,6 +3,7 @@ using Planningame_Insfrastructure;
 using Planningame_Insfrastructure.Inicialization;
 using Planningame_Application;
 using Planningame_Api.Mapeadores;
+using Planningame_Api.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +33,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseMiddleware<ExceptionMiddleware>();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

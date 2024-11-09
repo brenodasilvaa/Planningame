@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Planningame_Domain.Interfaces;
 using Planningame_Domain.Interfaces.Repositorios;
+using Planningame_Insfrastructure.Repositorios;
 
 namespace Planningame_Insfrastructure.Inicialization
 {
@@ -23,6 +24,7 @@ namespace Planningame_Insfrastructure.Inicialization
             services.AddScoped<IPartidaRepository, PartidaRepository>();
             services.AddScoped<IRodadaRepository, RodadaRepository>();
             services.AddScoped<IJogadorRepositoy, JogadorRepositoy>();
+            services.AddScoped<IVotoRepository, VotoRepository>();
         }
     }
 }
