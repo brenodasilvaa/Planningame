@@ -1,4 +1,5 @@
-﻿using Planningame_Domain.Entidades;
+﻿using Microsoft.EntityFrameworkCore;
+using Planningame_Domain.Entidades;
 using Planningame_Insfrastructure;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,14 @@ namespace Planningame_Domain.Interfaces.Repositorios
             await context.Rodadas.AddAsync(rodada, cancellation);
 
             return rodada.Id;
+        }
+
+        public Task<Rodada?> GetById(Guid rodadaId, CancellationToken cancellation)
+        {
+            return context.Rodadas
+                .Include(x => x.Jogadores)
+                .ThenInclude(x => x.Votos)
+                .FirstOrDefaultAsync(x => x.Id == rodadaId, cancellation);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Planningame_Domain.Entidades;
+﻿using Planningame_Application.Models;
+using Planningame_Domain.Entidades;
 
 namespace Planningame_Application.Interfaces
 {
@@ -6,5 +7,6 @@ namespace Planningame_Application.Interfaces
     {
         Task<Guid> Criar(Rodada rodada, CancellationToken cancellation);
         Task<double> CalcularVotos(Guid id, CancellationToken cancellation);
+        Task<Rodada> GetInfo(Guid id, CancellationToken cancellation);
     }
 }

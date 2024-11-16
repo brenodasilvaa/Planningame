@@ -1,8 +1,8 @@
 ﻿using Planningame_Application.Interfaces;
+using Planningame_Application.Models;
 using Planningame_Domain.Entidades;
 using Planningame_Domain.Interfaces;
 using Planningame_Domain.Interfaces.Repositorios;
-using System.Runtime.Intrinsics.X86;
 
 namespace Planningame_Application.Services
 {
@@ -30,6 +30,16 @@ namespace Planningame_Application.Services
             await unityOfWork.SaveAsync();
 
             return rodada.Id;
+        }
+
+        public async Task<Rodada> GetInfo(Guid id, CancellationToken cancellation)
+        {
+            var rodada = await rodadaRepositoy.GetById(id, cancellation);
+
+            if (rodada == null)
+                throw new ApplicationException("Rodada não encontrada");
+
+            return rodada;
         }
     }
 }

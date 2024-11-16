@@ -11,5 +11,6 @@ namespace Planningame_Domain.Interfaces.Repositorios
     {
         Task<Partida> Criar(Partida partida, CancellationToken cancellation);
         Task<Partida?> GetById(Guid id, CancellationToken cancellation);
+        Task<Guid> GetRodadaAtiva(Guid id, CancellationToken cancellation);
     }
 }

@@ -15,8 +15,15 @@ builder.Services.ConfigureInfra(builder.Configuration);
 builder.Services.ConfigureApplication(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddCors(x => x.AddPolicy("AllowAll", policy =>
+{
+    policy.AllowAnyOrigin() 
+          .AllowAnyMethod() 
+          .AllowAnyHeader();
+}));
 
 PartidaMap.Add();
+RodadasMap.Add();
 
 var app = builder.Build();
 
@@ -37,6 +44,7 @@ app.UseMiddleware<ExceptionMiddleware>();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+app.UseCors("AllowAll");
 
 app.MapControllers();
 

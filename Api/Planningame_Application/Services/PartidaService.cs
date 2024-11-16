@@ -14,6 +14,12 @@ namespace Planningame_Application.Services
     {
         public async Task<Guid> Criar(Partida partida, CancellationToken cancellation)
         {
+            var novaRodada = new Rodada() { PartidaId = partida.Id, Partida = partida };
+
+            novaRodada.Jogadores.Add(partida.Jogadores.First());
+
+            partida.Rodadas.Add(novaRodada);
+
             await repository.Criar(partida, cancellation);
 
             await unityOfWork.SaveAsync();

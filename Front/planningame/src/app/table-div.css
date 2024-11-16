@@ -1,0 +1,24 @@
+.wood-div {
+    background-image: url('../../public/assets/wood-2045379_1920.jpg'); /* Add your wood texture image URL */
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #4d2e00; /* Wood-like text color */
+    border-radius: 100px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.4); /* Depth effect */
+    font-family: 'Georgia', serif;
+    height: 200px;
+    width: 200px;
+  }
+
+  .center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh; /* Full viewport height */
+    width: 100%;
+  }
+  
+  .center-div {
+    width: 200px;
+    height: 100vh;
+  }

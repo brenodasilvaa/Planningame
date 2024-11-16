@@ -25,5 +25,12 @@ namespace Planningame_Domain.Interfaces.Repositorios
                 .Include(x => x.Rodadas)
                 .FirstOrDefaultAsync(x => x.Id == id);
         }
+
+        public async Task<Guid> GetRodadaAtiva(Guid id, CancellationToken cancellation)
+        {
+            return (await dbContext.Rodadas
+                .Where(x => x.PartidaId == id)
+                .OrderByDescending(x => x.Numero).FirstAsync(cancellationToken: cancellation)).Id;
+        }
     }
 }
