@@ -13,7 +13,8 @@ namespace Planningame_Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateJogadorCommand command, CancellationToken cancellation)
         {
-            return Ok(await jogadores.Criar(command.Adapt<Jogador>(), cancellation));
+            var jogadorId = await jogadores.Criar(command.Adapt<Jogador>(), cancellation);
+            return Ok(new {id = jogadorId});
         }
     }
 }
