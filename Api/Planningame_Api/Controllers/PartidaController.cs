@@ -17,7 +17,7 @@ namespace Planningame_Api.Controllers
         {
             var partidaId = await partidaService.Criar(command.Adapt<Partida>(), cancellation);
 
-            return Ok(new { id = partidaId });
+            return Ok(partidaId );
         }
 
         [HttpGet("{id}")]

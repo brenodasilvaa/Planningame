@@ -1,4 +1,5 @@
 ﻿using Planningame_Application.Interfaces;
+using Planningame_Application.Models;
 using Planningame_Domain.Entidades;
 using Planningame_Domain.Interfaces;
 using Planningame_Domain.Interfaces.Repositorios;
@@ -12,7 +13,7 @@ namespace Planningame_Application.Services
 {
     internal class PartidaService(IPartidaRepository repository, IUnityOfWork unityOfWork) : IPartidaService
     {
-        public async Task<Guid> Criar(Partida partida, CancellationToken cancellation)
+        public async Task<CriarPartidaDto> Criar(Partida partida, CancellationToken cancellation)
         {
             var novaRodada = new Rodada() { PartidaId = partida.Id, Partida = partida };
 
@@ -24,7 +25,7 @@ namespace Planningame_Application.Services
 
             await unityOfWork.SaveAsync();
 
-            return partida.Id;
+            return new CriarPartidaDto() {JogadorId = partida.Jogadores.First().Id, PartidaId = partida.Id };
         }
 
         public async Task<Partida> GetById(Guid id, CancellationToken cancellation)

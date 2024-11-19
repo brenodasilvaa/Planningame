@@ -25,14 +25,14 @@ const NovoUsuario = ({partidaId}) => {
       if (!response.ok) {
         throw new Error("Failed to create partida");
       }
-debugger
+      
       const { id } = await response.json();
-      Cookies.set("PlanningGame", {"Nome": jogador, "Id": id}, { expires: 7 });
+      Cookies.set("PlanningGame", JSON.stringify({nome: jogador, jogadorId: id, partidaId: partidaId}), { expires: 7 });
     } catch (error) {
       console.error("Error creating usuer:", error);
       alert("Failed to create user. Please try again.");
     } finally {
-        router.push(`/partida/${partidaId}`)
+      router.refresh();
     }
   };
 

@@ -1,6 +1,6 @@
 'use-client'
 import React, { useEffect, useState } from "react";
-import Footer from "../../../src/app/footer";
+import BotaoDeEscolha from "../../app/components/botaoDeEscolha";
 import JogadoresMesa from "../../../src/app/jogadores-mesa";
 import { useRouter } from "next/router";
 import RootLayout from "../../app/layout";
@@ -18,7 +18,6 @@ export default function Home() {
       try {
 
         const cookies = document.cookie;
-debugger
         if (cookies.includes("PlanningGame")) {
           setUsuario(true);
         }
@@ -51,7 +50,7 @@ debugger
        <div className="center-div">
           <JogadoresMesa rodadaId={rodadaId} />
        </div>
-       <Footer></Footer>
+       <BotaoDeEscolha></BotaoDeEscolha>
       </div>
     </RootLayout>
   );

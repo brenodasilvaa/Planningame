@@ -7,11 +7,11 @@
     background-color: #ffffff;
     color: white;
     display: grid;
-    grid-template-columns: repeat(10, 1fr); /* 10 equal columns */
-    gap: 5px; /* Optional: space between each part */
+    grid-template-columns: repeat(10, 1fr);
+    gap: 5px;
     text-align: center;
     z-index: 1000;
-    height: 10vh;
+    height: 12vh;
   }
 
   .footer-item {
@@ -22,13 +22,13 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 18px;
     display: flex;
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
+    align-items: center;
+    justify-content: center;
     transition: background-color 0.3s;
   }
   
   .footer-item:hover {
-    background-color: #555; /* Hover effect */
+    background-color: #5f708d;
   }

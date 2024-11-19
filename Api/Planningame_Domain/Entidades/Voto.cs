@@ -13,6 +13,6 @@ namespace Planningame_Domain.Entidades
         public Guid RodadaId { get; set; }
         public required Jogador Jogador { get; set; }
         public required Rodada Rodada { get; set; }
-        public required DateTime DataDoVoto { get; set; }
+        public required DateTime DataDoVoto { get; set; } = DateTime.UtcNow;
     }
 }

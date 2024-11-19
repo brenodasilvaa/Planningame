@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import Cookies from "js-cookie";
 
 const HomePage: React.FC = () => {
   const [partida, setPartida] = useState("");
@@ -26,8 +27,10 @@ const HomePage: React.FC = () => {
         throw new Error("Failed to create partida");
       }
 
-      const { id } = await response.json(); // Assume the API returns the created game's `id`
-      router.push(`/partida/${id}`); // Redirect to the dynamic page
+      const data = await response.json();
+      debugger
+      Cookies.set("PlanningGame", JSON.stringify({nome: jogador, jogadorId: data.jogadorId, partidaId: data.partidaId}), { expires: 7 });
+      router.push(`/partida/${data.partidaId}`);
     } catch (error) {
       console.error("Error creating partida:", error);
       alert("Failed to create partida. Please try again.");

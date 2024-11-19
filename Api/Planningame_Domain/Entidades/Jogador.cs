@@ -11,7 +11,7 @@ namespace Planningame_Domain.Entidades
         public required string Nome { get; set; }
         public required Guid PartidaId { get; set; }
         public required Partida Partida { get; set; }
-        public required ICollection<Rodada> Rodadas { get; set; }
-        public required ICollection<Voto> Votos { get; set; }
+        public required ICollection<Rodada> Rodadas { get; set; } = [];
+        public required ICollection<Voto> Votos { get; set; } = [];
     }
 }
