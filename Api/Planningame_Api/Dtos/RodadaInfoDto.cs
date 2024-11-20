@@ -4,6 +4,7 @@
     {
         public required int NumeroJogadores { get; set; }
         public required bool TodosVotaram { get; set; }
+        public bool Brindou { get; set; }
         public required ICollection<RodadaJogadorInfoDto> Jogadores { get; set; }
     }
 

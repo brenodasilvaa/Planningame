@@ -22,7 +22,24 @@ namespace Planningame_Api.Controllers
         {
             try
             {
-                return Ok(await rodadaService.CalcularVotos(id, cancellation));
+                var calculoVoto = await rodadaService.CalcularVotos(id, cancellation);
+
+                return Ok(new {voto = calculoVoto});
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("Brindar/{id}")]
+        public async Task<IActionResult> Brindar(Guid id, CancellationToken cancellation)
+        {
+            try
+            {
+                await rodadaService.Brindar(id, cancellation);
+
+                return Ok();
             }
             catch (Exception ex)
             {
@@ -35,8 +52,7 @@ namespace Planningame_Api.Controllers
         {
             try
             {
-                var teste = (await rodadaService.GetInfo(id, cancellation)).Adapt<RodadaInfoDto>();
-                return Ok(teste);
+                return Ok((await rodadaService.GetInfo(id, cancellation)).Adapt<RodadaInfoDto>());
             }
             catch (Exception ex)
             {

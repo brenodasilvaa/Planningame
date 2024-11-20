@@ -3,22 +3,29 @@
 import React, { useState, useEffect } from "react";
 import Table from "./table";
 import Image from "next/image";
+import { createTheme } from "@mui/material";
+import { Rodada } from "./classes/rodada";
 
-class Rodada {
-    numeroJogadores: number;
-    todosVotaram: boolean;
-    jogadores:Array<Jogadores> = new Array;
-  }
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: "#ffffff"
+      },
+      secondary:{
+        main: "#fff55a"
+      }
+    },
+  });
 
-  class Jogadores{
-    votou: boolean;
-    nome: string;
-  }
-
-const JogadoresMesa = ({rodadaId, refreshTrigger}) => {
+const JogadoresMesa = ({rodadaId, refreshTrigger, triggerRefresh}) => {
   const [rodada, setRodada] = useState<Rodada>(new Rodada);
+  const [refreshBrinde, setRefresh] = useState(0);
 
-const fetchIconCount = async () => {
+  const triggerRefreshBrinde = () => {
+    setRefresh((prev) => prev + 1);
+  };
+
+const fetchRodadaInfo = async () => {
     try {
       const response = await fetch(`https://localhost:44303/api/Rodada/Info/${rodadaId}`);
       const data = await response.json();
@@ -29,9 +36,9 @@ const fetchIconCount = async () => {
   };
   
   useEffect(() => {
-      fetchIconCount();
-  }, [refreshTrigger, rodadaId]);
-debugger
+      fetchRodadaInfo();
+  }, [refreshTrigger, rodadaId, refreshBrinde]);
+
   const radius = 180;
 
   return (
@@ -44,7 +51,7 @@ debugger
         position: "relative",
       }}
     >
-      <Table todosVotaram={rodada.todosVotaram}></Table>
+      <Table rodada={rodada} rodadaId={rodadaId} refreshBrinde={triggerRefreshBrinde} triggerRefresh={triggerRefresh}></Table>
       {rodada.jogadores.map((jogador, index) => {
         const angle = (index / rodada.numeroJogadores) * 2 * Math.PI;
         const x = Math.cos(angle) * radius;

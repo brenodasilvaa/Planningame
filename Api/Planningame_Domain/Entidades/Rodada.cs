@@ -13,6 +13,7 @@ namespace Planningame_Domain.Entidades
         public int Numero { get; set; }
         public required Guid PartidaId { get; set; }
         public required Partida Partida { get; set; }
+        public bool Brindou { get; set; }
         public ICollection<Jogador> Jogadores { get; set; } = [];
         public ICollection<Voto> Votos { get; set; } = [];
     }

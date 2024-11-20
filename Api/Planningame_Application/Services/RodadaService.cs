@@ -10,6 +10,18 @@ namespace Planningame_Application.Services
         IJogadorRepositoy jogadorRepositoy, IVotoRepository votoRepository,
         IUnityOfWork unityOfWork) : IRodadaService
     {
+        public async Task Brindar(Guid id, CancellationToken cancellation)
+        {
+            var rodada = await rodadaRepositoy.GetById(id, cancellation);
+
+            if (rodada == null)
+                throw new ApplicationException("Rodada não encontrada");
+
+            rodada.Brindou = true;
+
+            await unityOfWork.SaveAsync();
+        }
+
         public async Task<double> CalcularVotos(Guid id, CancellationToken cancellation)
         {
             var votos = await votoRepository.GetByRodadaId(id, cancellation);

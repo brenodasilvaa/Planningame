@@ -5,6 +5,7 @@ import JogadoresMesa from "../../../src/app/jogadores-mesa";
 import { useRouter } from "next/router";
 import RootLayout from "../../app/layout";
 import NovoUsuario from "../../app/novo-usuario";
+import Resultado from "../../app/components/resultado";
 
 export default function Home() {
   const router = useRouter();
@@ -51,9 +52,10 @@ export default function Home() {
 
   return (
     <RootLayout>
+      <Resultado refresh={refresh} rodadaId={rodadaId}></Resultado>
       <div className="center-container">
        <div className="center-div">
-          <JogadoresMesa rodadaId={rodadaId} refreshTrigger={refresh} />
+          <JogadoresMesa rodadaId={rodadaId} refreshTrigger={refresh} triggerRefresh={triggerRefresh} />
        </div>
        <BotaoDeEscolha triggerRefresh={triggerRefresh}></BotaoDeEscolha>
       </div>

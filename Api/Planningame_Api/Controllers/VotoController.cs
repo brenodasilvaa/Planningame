@@ -12,7 +12,7 @@ namespace Planningame_Api.Controllers
     public class VotoController(IVotoRepository repository, IUnityOfWork unityOfWork) : ControllerBase
     {
         [HttpPost]
-        public async Task<IActionResult> Create(CreateVotoCommand command, CancellationToken cancellation)
+        public async Task<IActionResult> Votar(CreateVotoCommand command, CancellationToken cancellation)
         {
             Guid votoId;
             

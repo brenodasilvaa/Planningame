@@ -8,5 +8,6 @@ namespace Planningame_Application.Interfaces
         Task<Guid> Criar(Rodada rodada, CancellationToken cancellation);
         Task<double> CalcularVotos(Guid id, CancellationToken cancellation);
         Task<Rodada> GetInfo(Guid id, CancellationToken cancellation);
+        Task Brindar(Guid id, CancellationToken cancellation);
     }
 }

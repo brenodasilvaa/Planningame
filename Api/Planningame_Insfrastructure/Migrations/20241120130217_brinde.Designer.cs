@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Planningame_Insfrastructure;
@@ -11,9 +12,11 @@ using Planningame_Insfrastructure;
 namespace Planningame_Insfrastructure.Migrations
 {
     [DbContext(typeof(PlanningameDbContext))]
-    partial class PlanningameDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241120130217_brinde")]
+    partial class brinde
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
