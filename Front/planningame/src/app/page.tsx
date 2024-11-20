@@ -73,7 +73,7 @@ const HomePage: React.FC = () => {
             cursor: "pointer",
           }}
         >
-          {loading ? "Creating..." : "Start Game"}
+          {loading ? "Criando..." : "Começar"}
         </button>
       </form>
     </div>

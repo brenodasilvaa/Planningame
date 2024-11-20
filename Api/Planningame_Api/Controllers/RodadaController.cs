@@ -35,7 +35,8 @@ namespace Planningame_Api.Controllers
         {
             try
             {
-                return Ok((await rodadaService.GetInfo(id, cancellation)).Adapt<RodadaInfoDto>());
+                var teste = (await rodadaService.GetInfo(id, cancellation)).Adapt<RodadaInfoDto>();
+                return Ok(teste);
             }
             catch (Exception ex)
             {

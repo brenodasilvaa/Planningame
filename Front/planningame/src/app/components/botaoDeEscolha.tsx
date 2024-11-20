@@ -3,7 +3,7 @@ import './footer-style.css';
 import Cookies from "js-cookie";
 import { useRouter } from 'next/router';
 
-const BotaoDeEscolha = () => {
+const BotaoDeEscolha = ({ triggerRefresh }) => {
   const [activeButton, setActiveButton] = useState(null);
   const router = useRouter();
 
@@ -40,7 +40,11 @@ const BotaoDeEscolha = () => {
   return (
     <div className="footer-fixed">
       {[...Array(10)].map((_, index) => (
-        <button className='footer-item' onClick={() => handleClick(index)} 
+        <button className='footer-item' onClick={async () => 
+          {
+            await handleClick(index);
+            triggerRefresh();
+          }} 
         style={{
           backgroundColor: activeButton === index ? "#5f708d" : "#aaa6a6",
           height: activeButton === index ? "11vh" : "11vh",

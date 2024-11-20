@@ -15,23 +15,23 @@ class Rodada {
     nome: string;
   }
 
-const JogadoresMesa = ({rodadaId}) => {
-  const [rodada, setIconCount] = useState<Rodada>(new Rodada);
-  debugger
-  useEffect(() => {
-    const fetchIconCount = async () => {
-        try {
-          const response = await fetch(`https://localhost:44303/api/Rodada/Info/${rodadaId}`);
-          const data = await response.json();
-          setIconCount(data); 
-        } catch (error) {
-          console.error("Failed to fetch icon count:", error);
-        }
-      };
-  
-      fetchIconCount();
-  }, []);
+const JogadoresMesa = ({rodadaId, refreshTrigger}) => {
+  const [rodada, setRodada] = useState<Rodada>(new Rodada);
 
+const fetchIconCount = async () => {
+    try {
+      const response = await fetch(`https://localhost:44303/api/Rodada/Info/${rodadaId}`);
+      const data = await response.json();
+      setRodada(data); 
+    } catch (error) {
+      console.error("Failed to fetch icon count:", error);
+    }
+  };
+  
+  useEffect(() => {
+      fetchIconCount();
+  }, [refreshTrigger, rodadaId]);
+debugger
   const radius = 180;
 
   return (
@@ -44,9 +44,7 @@ const JogadoresMesa = ({rodadaId}) => {
         position: "relative",
       }}
     >
-      <Table></Table>
-
-      {/* Icons */}
+      <Table todosVotaram={rodada.todosVotaram}></Table>
       {rodada.jogadores.map((jogador, index) => {
         const angle = (index / rodada.numeroJogadores) * 2 * Math.PI;
         const x = Math.cos(angle) * radius;

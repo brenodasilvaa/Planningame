@@ -14,11 +14,28 @@ namespace Planningame_Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateVotoCommand command, CancellationToken cancellation)
         {
-            var votoId = await repository.Criar(command.Adapt<Voto>(), cancellation);
+            Guid votoId;
+            
+            var voto = await repository.GetByRodadaId(command.RodadaId, cancellation);
 
+            if (voto == null)
+                return await CriarVoto();
+
+            var votoJogador = voto.FirstOrDefault(x => x.JogadorId == command.JogadorId);
+
+            if (votoJogador == null)
+                return await CriarVoto();
+
+            votoJogador.Valor = command.Valor;
             await unityOfWork.SaveAsync();
+            return Ok(votoJogador.Id);
 
-            return Ok(votoId);
+            async Task<IActionResult> CriarVoto()
+            {
+                votoId = await repository.Criar(command.Adapt<Voto>(), cancellation);
+                await unityOfWork.SaveAsync();
+                return Ok(votoId);
+            }
         }
     }
 }

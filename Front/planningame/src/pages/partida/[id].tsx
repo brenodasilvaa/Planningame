@@ -10,6 +10,11 @@ export default function Home() {
   const router = useRouter();
   const [rodadaId, setPartida] = useState("");
   const [usuarioExiste, setUsuario] = useState(false);
+  const [refresh, setRefresh] = useState(0);
+
+  const triggerRefresh = () => {
+    setRefresh((prev) => prev + 1);
+  };
 
   useEffect(() => {
     if (!router.isReady || !router.query.id) return; // Ensure router is ready and id is available
@@ -48,9 +53,9 @@ export default function Home() {
     <RootLayout>
       <div className="center-container">
        <div className="center-div">
-          <JogadoresMesa rodadaId={rodadaId} />
+          <JogadoresMesa rodadaId={rodadaId} refreshTrigger={refresh} />
        </div>
-       <BotaoDeEscolha></BotaoDeEscolha>
+       <BotaoDeEscolha triggerRefresh={triggerRefresh}></BotaoDeEscolha>
       </div>
     </RootLayout>
   );
