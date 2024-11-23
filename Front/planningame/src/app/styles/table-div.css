@@ -1,5 +1,5 @@
 .wood-div {
-    background-image: url('../../public/assets/wood-2045379_1920.jpg'); /* Add your wood texture image URL */
+    background-image: url('../../../public/assets/wood-2045379_1920.jpg'); /* Add your wood texture image URL */
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 100px;

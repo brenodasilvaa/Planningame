@@ -17,7 +17,19 @@ namespace Planningame_Api.Mapeadores
 
             TypeAdapterConfig<Jogador, RodadaJogadorInfoDto>
                 .NewConfig()
-                .Map(dest => dest.Votou, src => src.Votos.Any(x => src.Rodadas.Any(y => y.Id == x.RodadaId)));
+                .Map(dest => dest.Votou, src => src.Votos.Any(x => src.Rodadas.Any(y => y.Id == x.RodadaId)))
+                .AfterMapping((src, dest) =>
+                {
+                    var voto = src.Votos.FirstOrDefault(x => src.Rodadas.Any(y => y.Id == x.RodadaId));
+
+                    if (voto == null)
+                    {
+                        dest.Voto = null;
+                        return;
+                    }
+
+                    dest.Voto = voto.Valor;
+                });
         }
     }
 }

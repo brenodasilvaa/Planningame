@@ -1,5 +1,5 @@
 import React from 'react';
-import './table-div.css';
+import './styles/table-div.css';
 import NovaRodada from './components/novaRodada';
 
 const Table = ({rodada, rodadaId, refreshBrinde, triggerRefresh}) => {

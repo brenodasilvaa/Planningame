@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './footer-style.css';
+import '../styles/footer-style.css';
 import Cookies from "js-cookie";
 import { useRouter } from 'next/router';
 

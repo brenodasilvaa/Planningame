@@ -12,5 +12,6 @@
     {
         public required string Nome { get; set; }
         public required bool Votou { get; set; }
+        public int? Voto { get; set; }
     }
 }

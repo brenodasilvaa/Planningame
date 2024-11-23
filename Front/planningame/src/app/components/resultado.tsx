@@ -10,15 +10,15 @@ const Resultado = ({refresh, rodadaId}) => {
         try {
           const response = await fetch(`https://localhost:44303/api/Rodada/Info/${rodadaId}`);
           const data = await response.json();
-          setRodada(data); 
-        } catch (error) {
-          console.error("Failed to fetch icon count:", error);
-        }
-
-        if (rodada.brindou){
+          setRodada(data);
+          
+          if (data.brindou){
             const response = await fetch(`https://localhost:44303/api/Rodada/CalculoVoto/${rodadaId}`);
             const data = await response.json();
             setRefresh(data.voto);
+        }
+        } catch (error) {
+          console.error("Failed to fetch icon count:", error);
         }
       };
       
