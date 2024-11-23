@@ -40,7 +40,7 @@ export default function Home() {
     };
 
     fetchData();
-  }, [router.isReady, router.query.id]); // Dependency array includes router.isReady and router.query.id
+  }, [router.isReady, router.query.id, refresh]); // Dependency array includes router.isReady and router.query.id
 
   if (!rodadaId) {
     return <p>Loading...</p>; // Optionally show a loading state

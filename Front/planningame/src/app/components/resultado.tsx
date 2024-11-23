@@ -15,9 +15,11 @@ const Resultado = ({refresh, rodadaId}) => {
           console.error("Failed to fetch icon count:", error);
         }
 
-        const response = await fetch(`https://localhost:44303/api/Rodada/CalculoVoto/${rodadaId}`);
-        const data = await response.json();
-        setRefresh(data.voto);
+        if (rodada.brindou){
+            const response = await fetch(`https://localhost:44303/api/Rodada/CalculoVoto/${rodadaId}`);
+            const data = await response.json();
+            setRefresh(data.voto);
+        }
       };
       
       useEffect(() => {

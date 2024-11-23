@@ -1,16 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './table-div.css';
-import IconButton from "@mui/material/IconButton";
-import RefreshIcon from "@mui/icons-material/Refresh";
-import { createTheme, ThemeProvider } from '@mui/material';
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#e9b261"
-    }
-  },
-});
+import NovaRodada from './components/novaRodada';
 
 const Table = ({rodada, rodadaId, refreshBrinde, triggerRefresh}) => {
   
@@ -21,9 +11,6 @@ const Table = ({rodada, rodadaId, refreshBrinde, triggerRefresh}) => {
     });
     
     triggerRefresh();
-  };
-
-  const novaRodada = async () => {
   };
 
   if (!rodada.brindou){
@@ -41,28 +28,9 @@ const Table = ({rodada, rodadaId, refreshBrinde, triggerRefresh}) => {
 
   return (
     <div className="wood-div">
-      <ThemeProvider theme={theme}>
-      <IconButton
-      color="primary"
-      onClick={() => 
-        {
-          novaRodada(); 
-          refreshBrinde();
-        }}
-      style={{
-        backgroundColor: "#f0f0f0",
-        padding: "10px",
-        borderRadius: "50%",
-      }}
-    >
-      <RefreshIcon />
-    </IconButton>
-      </ThemeProvider>
-    
+      <NovaRodada></NovaRodada>
     </div>
   );
-
-
 };
 
 export default Table;

@@ -22,6 +22,7 @@ const JogadoresMesa = ({rodadaId, refreshTrigger, triggerRefresh}) => {
   const [refreshBrinde, setRefresh] = useState(0);
 
   const triggerRefreshBrinde = () => {
+    debugger
     setRefresh((prev) => prev + 1);
   };
 
