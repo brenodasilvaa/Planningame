@@ -16,7 +16,7 @@ const NovaRodada = () => {
 
       const novaRodada = async () => {
         console.log("Nova rodada")
-        await fetch(`https://localhost:44303/api/rodada`, {
+        await fetch(`http://192.168.0.67:44303/api/rodada`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

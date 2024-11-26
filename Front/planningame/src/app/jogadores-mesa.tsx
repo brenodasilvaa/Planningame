@@ -16,7 +16,7 @@ const JogadoresMesa = ({rodadaId, refreshTrigger, triggerRefresh}) => {
 
 const fetchRodadaInfo = async () => {
     try {
-      const response = await fetch(`https://localhost:44303/api/Rodada/Info/${rodadaId}`);
+      const response = await fetch(`http://192.168.0.67:44303/api/Rodada/Info/${rodadaId}`);
       const data = await response.json();
       setRodada(data); 
     } catch (error) {
@@ -25,7 +25,14 @@ const fetchRodadaInfo = async () => {
   };
   
   useEffect(() => {
+    fetchRodadaInfo();
+
+    const intervalId = setInterval(() => {
       fetchRodadaInfo();
+    }, 2000);
+
+    return () => clearInterval(intervalId);
+      
   }, [refreshTrigger, rodadaId, refreshBrinde]);
 
   return (

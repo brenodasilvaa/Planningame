@@ -6,7 +6,7 @@ const Table = ({rodada, rodadaId, refreshBrinde, triggerRefresh}) => {
   
   const handleClick = async () => {
 
-    await fetch(`https://localhost:44303/api/rodada/brindar/${rodadaId}`, {
+    await fetch(`http://192.168.0.67:44303/api/rodada/brindar/${rodadaId}`, {
       method: "PUT"
     });
     

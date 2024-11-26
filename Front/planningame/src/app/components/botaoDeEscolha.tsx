@@ -18,12 +18,12 @@ const BotaoDeEscolha = ({ triggerRefresh }) => {
 
         try {
             const responseRodadaAtiva = await fetch(
-              `https://localhost:44303/api/partida/rodadaativa/${parsedCookie.partidaId}`
+              `http://192.168.0.67:44303/api/partida/rodadaativa/${parsedCookie.partidaId}`
             );
     
             const result = await responseRodadaAtiva.json();
 
-            const response = await fetch("https://localhost:44303/api/voto", {
+            const response = await fetch("http://192.168.0.67:44303/api/voto", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",

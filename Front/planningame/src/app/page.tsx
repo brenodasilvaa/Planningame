@@ -15,7 +15,7 @@ const HomePage: React.FC = () => {
     setLoading(true);
 
     try {
-      const response = await fetch("https://localhost:44303/api/partida", {
+      const response = await fetch("http://192.168.0.67:44303/api/partida", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

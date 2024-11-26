@@ -29,7 +29,7 @@ export default function Home() {
         }
 
         const response = await fetch(
-          `https://localhost:44303/api/partida/rodadaativa/${router.query.id}`
+          `http://192.168.0.67:44303/api/partida/rodadaativa/${router.query.id}`
         );
 
         const result = await response.json();

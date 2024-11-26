@@ -8,12 +8,12 @@ const Resultado = ({refresh, rodadaId}) => {
 
     const fetchRodadaInfo = async () => {
         try {
-          const response = await fetch(`https://localhost:44303/api/Rodada/Info/${rodadaId}`);
+          const response = await fetch(`http://192.168.0.67:44303/api/Rodada/Info/${rodadaId}`);
           const data = await response.json();
           setRodada(data);
-          
+
           if (data.brindou){
-            const response = await fetch(`https://localhost:44303/api/Rodada/CalculoVoto/${rodadaId}`);
+            const response = await fetch(`http://192.168.0.67:44303/api/Rodada/CalculoVoto/${rodadaId}`);
             const data = await response.json();
             setRefresh(data.voto);
         }
