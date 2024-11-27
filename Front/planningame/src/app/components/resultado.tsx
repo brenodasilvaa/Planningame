@@ -24,7 +24,7 @@ const Resultado = ({refresh, rodadaId}) => {
       
       useEffect(() => {
           fetchRodadaInfo();
-      }, [refresh]);
+      }, [refresh, rodadaId]);
 
       if (!rodada.brindou)
         return;

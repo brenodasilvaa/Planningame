@@ -27,11 +27,7 @@ const fetchRodadaInfo = async () => {
   useEffect(() => {
     fetchRodadaInfo();
 
-    const intervalId = setInterval(() => {
-      fetchRodadaInfo();
-    }, 2000);
 
-    return () => clearInterval(intervalId);
       
   }, [refreshTrigger, rodadaId, refreshBrinde]);
 

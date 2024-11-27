@@ -3,9 +3,13 @@ import '../styles/footer-style.css';
 import Cookies from "js-cookie";
 import { useRouter } from 'next/router';
 
-const BotaoDeEscolha = ({ triggerRefresh }) => {
+const BotaoDeEscolha = ({ triggerRefresh, refresh }) => {
   const [activeButton, setActiveButton] = useState(null);
   const router = useRouter();
+
+  useEffect(() => {
+    setActiveButton(null)      
+  }, [refresh]);
 
   const handleClick = async (buttonId) => {
     setActiveButton(buttonId);
@@ -37,6 +41,7 @@ const BotaoDeEscolha = ({ triggerRefresh }) => {
     }
   };
   
+
   return (
     <div className="footer-fixed">
       {[...Array(10)].map((_, index) => (

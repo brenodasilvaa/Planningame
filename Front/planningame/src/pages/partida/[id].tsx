@@ -17,30 +17,37 @@ export default function Home() {
     setRefresh((prev) => prev + 1);
   };
 
+  const fetchData = async () => {
+    try {
+
+      const cookies = document.cookie;
+      if (cookies.includes("PlanningGame")) {
+        setUsuario(true);
+      }
+
+      const response = await fetch(
+        `http://192.168.0.67:44303/api/partida/rodadaativa/${router.query.id}`
+      );
+
+      const result = await response.json();
+      setPartida(result.rodadaId);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
   useEffect(() => {
     if (!router.isReady || !router.query.id) return; // Ensure router is ready and id is available
 
-    const fetchData = async () => {
-      try {
-
-        const cookies = document.cookie;
-        if (cookies.includes("PlanningGame")) {
-          setUsuario(true);
-        }
-
-        const response = await fetch(
-          `http://192.168.0.67:44303/api/partida/rodadaativa/${router.query.id}`
-        );
-
-        const result = await response.json();
-        setPartida(result.rodadaId);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
     fetchData();
-  }, [router.isReady, router.query.id, refresh]); // Dependency array includes router.isReady and router.query.id
+
+    const intervalId = setInterval(() => {
+      fetchData();
+      triggerRefresh();
+    }, 2000);
+
+    return () => clearInterval(intervalId);
+  }, [router.isReady, router.query.id]); // Dependency array includes router.isReady and router.query.id
 
   if (!rodadaId) {
     return <p>Loading...</p>; // Optionally show a loading state
@@ -57,7 +64,7 @@ export default function Home() {
        <div className="center-div">
           <JogadoresMesa rodadaId={rodadaId} refreshTrigger={refresh} triggerRefresh={triggerRefresh} />
        </div>
-       <BotaoDeEscolha triggerRefresh={triggerRefresh}></BotaoDeEscolha>
+       <BotaoDeEscolha triggerRefresh={triggerRefresh} refresh={rodadaId}></BotaoDeEscolha>
       </div>
     </RootLayout>
   );
