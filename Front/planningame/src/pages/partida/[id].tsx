@@ -6,12 +6,23 @@ import { useRouter } from "next/router";
 import RootLayout from "../../app/layout";
 import NovoUsuario from "../../app/novo-usuario";
 import Resultado from "../../app/components/resultado";
+import BotaoConvite from "../../app/components/convidar";
+import FeedbackAlerta from "../../app/components/feedbackAlerta";
 
 export default function Home() {
   const router = useRouter();
   const [rodadaId, setPartida] = useState("");
   const [usuarioExiste, setUsuario] = useState(false);
   const [refresh, setRefresh] = useState(0);
+  const [linkCopied, setLinkCopied] = useState(false);
+
+  const triggerLinkCopied = () => {
+    setLinkCopied(true)
+
+    setTimeout(() => {
+      setLinkCopied(false)
+    }, 3000);
+  }
 
   const triggerRefresh = () => {
     setRefresh((prev) => prev + 1);
@@ -60,6 +71,8 @@ export default function Home() {
   return (
     <RootLayout>
       <Resultado refresh={refresh} rodadaId={rodadaId}></Resultado>
+      <BotaoConvite triggerLinkCopied={triggerLinkCopied}></BotaoConvite>
+      <FeedbackAlerta linkCopied={linkCopied}></FeedbackAlerta>
       <div className="center-container">
        <div className="center-div">
           <JogadoresMesa rodadaId={rodadaId} refreshTrigger={refresh} triggerRefresh={triggerRefresh} />
