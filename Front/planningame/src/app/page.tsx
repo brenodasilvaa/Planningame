@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import Cookies from "js-cookie";
+import { Button, Input } from "@mui/material";
 
 const HomePage: React.FC = () => {
   const [partida, setPartida] = useState("");
@@ -40,27 +41,27 @@ const HomePage: React.FC = () => {
   };
 
   return (
-    <div style={{ display:"flex", flexDirection:"column", alignItems:"center", textAlign: "center", marginTop: "100px" }}>
-      <h1>Vamos começar?</h1>
+    <div style={{ display:"flex", flexDirection:"column", alignItems:"center", textAlign: "center", marginTop: "100px"}}>
+      <h1 style={{marginBottom:"20px" }}>Vamos começar?</h1>
       <form  style={{ display:"flex", flexDirection:"column", width:"30vw"}} onSubmit={handleSubmit}>
-        <input
+        <Input
           type="text"
           value={partida}
           onChange={(e) => setPartida(e.target.value)}
           placeholder="Descriçao da partida"
           required
-          style={{ padding: "10px", fontSize: "16px", width: "300px" }}
+          style={{ padding: "10px", marginBottom:"10px", fontSize: "16px", width: "30vw" }}
         />
-        <input
+        <Input
           type="text"
           value={jogador}
           onChange={(e) => setJogador(e.target.value)}
           placeholder="Seu nome"
           required
-          style={{ padding: "10px", fontSize: "16px", width: "300px" }}
+          style={{ padding: "10px", fontSize: "16px", width: "30vw" }}
         />
         <br />
-        <button
+        <Button
           type="submit"
           disabled={loading}
           style={{
@@ -74,7 +75,7 @@ const HomePage: React.FC = () => {
           }}
         >
           {loading ? "Criando..." : "Começar"}
-        </button>
+        </Button>
       </form>
     </div>
   );

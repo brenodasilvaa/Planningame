@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import Cookies from "js-cookie";
+import { Button, Input } from "@mui/material";
 
 const NovoUsuario = ({partidaId}) => {
   const [jogador, setJogador] = useState("");
@@ -38,18 +39,18 @@ const NovoUsuario = ({partidaId}) => {
 
   return (
     <div style={{ display:"flex", flexDirection:"column", alignItems:"center", textAlign: "center", marginTop: "100px" }}>
-      <h1>Como deseja ser chamado?</h1>
+      <h1 style={{marginBottom:"20px" }}>Como deseja ser chamado?</h1>
       <form  style={{ display:"flex", flexDirection:"column", width:"30vw"}} onSubmit={handleSubmit}>
-        <input
+        <Input
           type="text"
           value={jogador}
           onChange={(e) => setJogador(e.target.value)}
           placeholder="Seu nome"
           required
-          style={{ padding: "10px", fontSize: "16px", width: "300px" }}
+          style={{ padding: "10px", fontSize: "16px", width: "30vw" }}
         />
         <br />
-        <button
+        <Button
           type="submit"
           disabled={loading}
           style={{
@@ -62,8 +63,8 @@ const NovoUsuario = ({partidaId}) => {
             cursor: "pointer",
           }}
         >
-          {loading ? "Creating..." : "Start Game"}
-        </button>
+          {loading ? "Entrando..." : "Entrar"}
+        </Button>
       </form>
     </div>
   );
