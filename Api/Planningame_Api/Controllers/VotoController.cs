@@ -26,6 +26,9 @@ namespace Planningame_Api.Controllers
             if (votoJogador == null)
                 return await CriarVoto();
 
+            if (votoJogador.Rodada.Brindou)
+                return Ok(votoJogador.Id);
+
             votoJogador.Valor = command.Valor;
             await unityOfWork.SaveAsync();
             return Ok(votoJogador.Id);

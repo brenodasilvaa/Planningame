@@ -20,7 +20,7 @@ namespace Planningame_Insfrastructure.Repositorios
 
         public Task<IQueryable<Voto>> GetByRodadaId(Guid rodadaId, CancellationToken cancellation)
         {
-            return Task.FromResult(context.Votos.Where(x => x.RodadaId == rodadaId));
+            return Task.FromResult(context.Votos.Include(x => x.Rodada).Where(x => x.RodadaId == rodadaId));
         }
     }
 }
