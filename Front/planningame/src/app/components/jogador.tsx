@@ -53,7 +53,7 @@ const Jogador = ({jogador, brindou, index, x, y}) => {
             transform: "translate(-50%, -50%)",
           }}
         >
-        <label htmlFor="oii">{jogador.votou ? `${jogador.voto}` : ""}</label>
+        <label htmlFor="oii">{jogador.nome}</label>
         <Image
             src={jogador.votou ? "/assets/amendoim.png" : "/assets/interrogacao.png"}
             width={120}
@@ -63,6 +63,7 @@ const Jogador = ({jogador, brindou, index, x, y}) => {
             objectFit: "cover",
             }}
         />
+        <label htmlFor="oii">{jogador.votou ? `${jogador.voto}` : ""}</label>
         </div>
     </>
 }
