@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Planningame_Application", "
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{BB89C0F2-ABF5-4F00-A3BE-5CE7BDEFD1CA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanningGame_Tests", "..\PlanningGame_Tests\PlanningGame_Tests.csproj", "{187ACEAF-C940-46C0-A763-384A32793902}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{BB89C0F2-ABF5-4F00-A3BE-5CE7BDEFD1CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB89C0F2-ABF5-4F00-A3BE-5CE7BDEFD1CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB89C0F2-ABF5-4F00-A3BE-5CE7BDEFD1CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{187ACEAF-C940-46C0-A763-384A32793902}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{187ACEAF-C940-46C0-A763-384A32793902}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{187ACEAF-C940-46C0-A763-384A32793902}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{187ACEAF-C940-46C0-A763-384A32793902}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

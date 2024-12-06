@@ -5,7 +5,7 @@ using Planningame_Domain.Interfaces.Repositorios;
 
 namespace Planningame_Application.Services
 {
-    internal class JogadoresService(IJogadorRepositoy jogadorRepositoy, 
+    public class JogadoresService(IJogadorRepositoy jogadorRepositoy, 
         IPartidaRepository partidaRepository,
         IRodadaRepository rodadaRepository,
         IUnityOfWork unityOfWork) : IJogadoresService
