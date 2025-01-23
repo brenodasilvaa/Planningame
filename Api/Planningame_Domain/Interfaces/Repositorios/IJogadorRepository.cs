@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Planningame_Domain.Interfaces.Repositorios
 {
-    public interface IJogadorRepositoy
+    public interface IJogadorRepository
     {
         Task<Guid> Criar(Jogador jogador, CancellationToken cancellation);
         Task<IEnumerable<Jogador>> GetByPartidaId(Guid partidaId, CancellationToken cancellation);

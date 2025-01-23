@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PlanningGame_Tests.Fakers
 {
-    internal class JogadoresRepoFaker : IJogadorRepositoy
+    internal class JogadoresRepoFaker : IJogadorRepository
     {
         public async Task<Guid> Criar(Jogador jogador, CancellationToken cancellation)
         {

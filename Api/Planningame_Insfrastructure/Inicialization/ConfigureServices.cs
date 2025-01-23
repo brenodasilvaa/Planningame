@@ -23,7 +23,7 @@ namespace Planningame_Insfrastructure.Inicialization
 
             services.AddScoped<IPartidaRepository, PartidaRepository>();
             services.AddScoped<IRodadaRepository, RodadaRepository>();
-            services.AddScoped<IJogadorRepositoy, JogadorRepositoy>();
+            services.AddScoped<IJogadorRepository, JogadorRepositoy>();
             services.AddScoped<IVotoRepository, VotoRepository>();
         }
     }

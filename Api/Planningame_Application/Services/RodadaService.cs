@@ -6,8 +6,8 @@ using Planningame_Domain.Interfaces.Repositorios;
 
 namespace Planningame_Application.Services
 {
-    internal class RodadaService(IRodadaRepository rodadaRepositoy, 
-        IJogadorRepositoy jogadorRepositoy, IVotoRepository votoRepository,
+    public class RodadaService(IRodadaRepository rodadaRepositoy, 
+        IJogadorRepository jogadorRepositoy, IVotoRepository votoRepository,
         IUnityOfWork unityOfWork) : IRodadaService
     {
         public async Task Brindar(Guid id, CancellationToken cancellation)

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Planningame_Domain.Interfaces.Repositorios
 {
-    internal class JogadorRepositoy(PlanningameDbContext context) : IJogadorRepositoy
+    internal class JogadorRepositoy(PlanningameDbContext context) : IJogadorRepository
     {
         public async Task<Guid> Criar(Jogador jogador, CancellationToken cancellation)
         {

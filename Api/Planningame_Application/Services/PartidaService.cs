@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Planningame_Application.Services
 {
-    internal class PartidaService(IPartidaRepository repository, IUnityOfWork unityOfWork) : IPartidaService
+    public class PartidaService(IPartidaRepository repository, IUnityOfWork unityOfWork) : IPartidaService
     {
         public async Task<CriarPartidaDto> Criar(Partida partida, CancellationToken cancellation)
         {
