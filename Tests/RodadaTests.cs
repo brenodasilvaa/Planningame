@@ -42,5 +42,38 @@ namespace PlanningGame_Tests
 
             Assert.True(calculoVotosResultado == mediaEsperada);
         }
+
+        [Fact]
+        public async Task Rodada_Brindar_DeveBrindar()
+        {
+            var jogadorRepo = Substitute.For<IJogadorRepository>();
+            var partidaRepo = Substitute.For<IPartidaRepository>();
+            var votoRepo = Substitute.For<IVotoRepository>();
+            var rodadaRepo = Substitute.For<IRodadaRepository>();
+            var ufw = Substitute.For<IUnityOfWork>();
+
+            var partidaId = Guid.NewGuid();
+            var rodadaId = Guid.NewGuid();
+
+            var partida = new Faker<Partida>()
+                .RuleFor(c => c.Nome, f => f.Lorem.Text())
+                .RuleFor(c => c.Id, partidaId).Generate(1).First();
+
+            var rodada = new Faker<Rodada>()
+                .RuleFor(c => c.Id, rodadaId)
+                .RuleFor(c => c.Brindou, false)
+                .Generate(1).First();
+
+            var jogador = new Faker<Jogador>()
+                .RuleFor(c => c.PartidaId, partidaId).Generate(1).First();
+
+            rodadaRepo.GetById(rodadaId, CancellationToken.None).Returns(rodada);
+
+            var rodadaService = new RodadaService(rodadaRepo, jogadorRepo, votoRepo, ufw);
+
+            await rodadaService.Brindar(rodadaId, CancellationToken.None);
+
+            Assert.True(rodada.Brindou);
+        }
     }
 }
