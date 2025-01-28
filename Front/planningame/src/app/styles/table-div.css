@@ -27,8 +27,8 @@
   .buttonView{
     background-color: #e6cca6;
     border-radius: 100px;
-    height: 11vh;
-    width: 5vw;
+    height: 8vh;
+    width: 8vh;
   }
 
   .buttonView:hover{

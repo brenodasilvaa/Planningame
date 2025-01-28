@@ -48,7 +48,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    if (!router.isReady || !router.query.id) return; // Ensure router is ready and id is available
+    if (!router.isReady || !router.query.id) return;
 
     fetchData();
 
@@ -58,10 +58,10 @@ export default function Home() {
     }, 2000);
 
     return () => clearInterval(intervalId);
-  }, [router.isReady, router.query.id]); // Dependency array includes router.isReady and router.query.id
+  }, [router.isReady, router.query.id]); 
 
   if (!rodadaId) {
-    return <p>Loading...</p>; // Optionally show a loading state
+    return <p>Loading...</p>; 
   }
 
   if(!usuarioExiste){
